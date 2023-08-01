@@ -1,0 +1,39 @@
+
+body {
+  background: #f0dcd1;
+}
+
+#nav-bar {
+  position: relative;
+  height: 50px;
+  background: #aadae6;
+  border-radius: 20px;
+  padding: 5px;
+}
+
+#locater-logo{
+  font-family: 'Baloo 2', cursive;
+  font-size: 35px;
+  left: 15px;
+  position: relative;
+}
+
+#vendor-account {
+  position: absolute;
+  right: 10px;
+  font-size: 20px;
+  top: 10px;
+}
+
+#side-nav {
+  position: absolute;
+  top: 25%;
+  width: 5%;
+  height: 75%;
+}
+
+.side-nav-buttons{
+  padding: 10px;
+  margin-left: 15%;
+  margin-bottom: 25%;
+}

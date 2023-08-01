@@ -1,0 +1,16 @@
+#header {
+  text-align:center;
+  font-size: 85px;
+  position: relative;
+  top: 65px;
+  font-family: 'Manjari', sans-serif  ;
+}
+
+#log-in {
+  position: absolute;
+  padding: 10px;
+  padding-left: 50px;
+  padding-right: 50px;
+  top: 20px;
+  right: 20px;
+}
