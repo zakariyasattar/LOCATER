@@ -1,7 +1,12 @@
-
 body {
-  background: #f0dcd1;
+  background: #f9f4ef;
   font-family: 'Manjari', sans-serif;
+
+  position: fixed;
+  overflow-y: scroll;
+  padding: 0;
+  margin: 0;
+  width: 100%;
 }
 
 #grid-wrapper {
@@ -15,25 +20,31 @@ body {
   position: relative;
   height: 50px;
   padding: 5px;
+  width: 100%;
 }
 
 #locater-logo{
   font-family: 'Baloo 2', cursive;
   font-size: 35px;
-  left: 45px;
+  padding: 15px 0px 0px 30px;
   position: relative;
 }
 
 #vendor-account {
+  background: white;
+  color: #716040;
   position: absolute;
-  right: 10px;
-  font-size: 20px;
+  font-size: 16px;
   top: 20px;
+  padding: 20px 30px 20px 20px;
+  border-radius: 0 0 0 10px;
+  right: 0;
+  top: 0;
 }
 
 #side-nav {
   position: absolute;
-  top: 25%;
+  top: 30%;
   left: 3%;
   width: 5%;
   height: 75%;
@@ -44,7 +55,7 @@ body {
   width: 250%;
   margin-left: 15%;
   border-radius: 5px;
-  margin-bottom: 40%;
+  margin-bottom: 45%;
   border: 2px solid #194abd;
   box-shadow: 6px 6px 6px #ababab;
   transition: .2s;
@@ -59,7 +70,8 @@ body {
 #main-display {
   grid-column: 2 / 7;
   grid-row: 1 / 6;
-  background: #8a175e;
+  background: #eaddcf;
+  outline: 2px solid black;
   border-radius: 15px;
   position: relative;
   right: 15%;
