@@ -1,9 +1,7 @@
 body {
   background: #f9f4ef;
   font-family: 'Manjari', sans-serif;
-
-  position: fixed;
-  overflow-y: scroll;
+  overflow-x: hidden;
   padding: 0;
   margin: 0;
   width: 100%;
@@ -67,6 +65,12 @@ body {
   cursor: pointer;
 }
 
+.side-nav-buttons:focus {
+  box-shadow: none;
+  background: #eaddcf;
+  border: 2px solid #232946;
+}
+
 #main-display {
   grid-column: 2 / 7;
   grid-row: 1 / 6;
@@ -75,15 +79,86 @@ body {
   border-radius: 15px;
   position: relative;
   right: 15%;
-  top: 10%;
+  top: 5%;
 }
 
-#default_vendor_img {
-  width: 25%;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+.main-display-categories {
+  display: none;
+  text-align: center;
+}
+
+/* Category 1: General */
+
+#general h1 {
+  font-size: 40px;
+  padding-top: 20px;
+}
+
+#general #vendor-name {
+  color: #2f3863;
+}
+
+#general #general-ratings {
+  color: #f25042;
+  font-size: 18px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+#general-wrapper {
+  margin: 1rem;
+  padding: 2rem 2rem;
+  text-align: center;
+}
+
+#general .general-divs {
+  background: #f9f4ef;
+  border: 3px solid #2f3863;
+  border-radius: 15px;
+  width: 35%;
+  box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, .2);
+
+  display: inline-block;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+#general .general-category-header {
+  font-size: 20px;
+  padding-bottom: 10px;
+  border-radius: 15px 15px 0 0;
+  padding-top: 20px;
+  background: #eff0f3;
+  border-bottom: 2px solid #2f3863;
+}
+
+#general .general-number-header {
+  font-size: 45px;
+  color: #55423d;
+}
+
+#general #general-new-orders {
   position: relative;
-  top: 15%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  top: 0;
+
+  border-radius: 0px 0px 65px 0px;
+  border-right: 3px solid black;
+  border-bottom: 3px solid black;
+  width: 75%;
+}
+
+#general #general-completed-orders {
+  padding-bottom: 30px;
+  padding-top: 20px;
+  position: relative;
+  bottom: 0;
+  float: right;
+
+  border-left: 3px solid black;
+  border-top: 3px solid black;
+  border-radius: 65px 0px 0px 0px;
+  width: 55%;
 }
 

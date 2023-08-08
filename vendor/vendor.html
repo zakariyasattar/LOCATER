@@ -16,7 +16,7 @@
     <div id="locater-logo">Locater</div>
 
     <div id ="vendor-account">
-      <div id="vendor-name">Welcome <span id="vendor_name"></span></div>
+      <div>Vendor Dashboard</div>
       <div id="account-logo"></div>
     </div>
   </div>
@@ -24,7 +24,7 @@
   <div id="grid-wrapper">
 
     <div id="side-nav">
-      <button class="side-nav-buttons">Profile</button>
+      <button class="side-nav-buttons">General</button>
       <button class="side-nav-buttons">Offerings</button>
       <button class="side-nav-buttons">Orders</button>
       <button class="side-nav-buttons">Ratings</button>
@@ -32,7 +32,30 @@
     </div>
 
     <div id="main-display">
-      <img id="default_vendor_img" src="../assets/images/default_vendor_img.jpg"></img>
+      <div id="general" class="main-display-categories" style="display: block">
+        <h1>Welcome, <span id="vendor-name"></span></h1>
+        <span id="general-ratings">&#10025; &nbsp<span id="rating"></span> / 5&nbsp</span> <span style="font-size: 18px;">( <span id="num-of-reviews"></span> )</span>
+        <div id="general-wrapper">
+          <div id="general-orders" class="general-divs">
+            <div class="general-category-header">
+              Orders
+            </div>
+
+            <div id="general-new-orders"><span class="general-number-header">3</span></div>
+            <div id="general-completed-orders"><span class="general-number-header">42</span></div>
+
+          </div>
+          <div id="general-revenue" class="general-divs">
+            <div class="general-category-header">
+              Revenue
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="offerings" class="main-display-categories"></div>
+      <div id="orders" class="main-display-categories"></div>
+      <div id="ratings" class="main-display-categories"></div>
+      <div id="revenue" class="main-display-categories"></div>
     </div>
   </div>
 
