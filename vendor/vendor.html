@@ -41,13 +41,42 @@
               Orders
             </div>
 
-            <div id="general-new-orders"><span class="general-number-header">3</span></div>
-            <div id="general-completed-orders"><span class="general-number-header">42</span></div>
+            <div>
+              <button id="general-view-orders">View Orders</button>
+              <div id="general-new-orders">
+                <span class="general-number-header">3</span> <br/>
+                <span class="general-letter-header">New Orders</span>
+              </div>
+            </div>
+
+            <div>
+              <button id="general-view-reports">View Reports</button>
+              <div id="general-completed-orders">
+                <span class="general-number-header">42</span> <br/>
+                <span class="general-letter-header">Completed Orders</span>
+              </div>
+            </div>
 
           </div>
           <div id="general-revenue" class="general-divs">
             <div class="general-category-header">
               Revenue
+            </div>
+
+            <div style="display: flex;">
+              <div id="income-month">
+                <span id="income"></span>
+                <span class="general-number-header">30K</span> <br/><br/>
+                <span class="general-letter-header">Income This Month</span>
+              </div>
+              <div id="general-revenue-avgorder">
+                <span class="general-number-header">$293</span> <br/><br/>
+                <span class="general-letter-header">Average Order Amount</span>
+              </div>
+            </div>
+
+            <div>
+              <button id="revenue-button">View Revenue</button>
             </div>
           </div>
         </div>
