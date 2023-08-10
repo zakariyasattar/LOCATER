@@ -13,7 +13,7 @@
 
 <body>
   <div id="nav-bar">
-    <div id="locater-logo">Locater</div>
+    <div id="locater-logo" onclick=" window.location = '../index.html'">Locater</div>
 
     <div id ="vendor-account">
       <div>Vendor Dashboard</div>
@@ -24,17 +24,17 @@
   <div id="grid-wrapper">
 
     <div id="side-nav">
-      <button class="side-nav-buttons">General</button>
-      <button class="side-nav-buttons">Offerings</button>
-      <button class="side-nav-buttons">Orders</button>
-      <button class="side-nav-buttons">Ratings</button>
-      <button class="side-nav-buttons">Revenue</button>
+      <button id="general-button" class="side-nav-buttons" onclick="switchDisplay(this.id);">General</button>
+      <button id="offerings-button" class="side-nav-buttons" onclick="switchDisplay(this.id);">Offerings</button>
+      <button id="orders-button" class="side-nav-buttons" onclick="switchDisplay(this.id)">Orders</button>
+      <button id="ratings-button" class="side-nav-buttons" onclick="switchDisplay(this.id)">Ratings</button>
+      <button id="revenue-button" class="side-nav-buttons" onclick="switchDisplay(this.id)">Revenue</button>
     </div>
 
     <div id="main-display">
       <div id="general" class="main-display-categories" style="display: block">
         <h1>Welcome, <span id="vendor-name"></span></h1>
-        <span id="general-ratings">&#10025; &nbsp<span id="rating"></span> / 5&nbsp</span> <span style="font-size: 18px;">( <span id="num-of-reviews"></span> )</span>
+        <span id="general-ratings" onclick="switchDisplay('ratings-button')">&#10025; &nbsp<span id="rating"></span> / 5&nbsp</span> <span style="font-size: 18px;">( <span id="num-of-reviews"></span> )</span>
         <div id="general-wrapper">
           <div id="general-orders" class="general-divs">
             <div class="general-category-header">
@@ -42,7 +42,7 @@
             </div>
 
             <div>
-              <button id="general-view-orders">View Orders</button>
+              <button id="general-view-orders" onclick="switchDisplay('orders-button')">View Orders</button>
               <div id="general-new-orders">
                 <span class="general-number-header">3</span> <br/>
                 <span class="general-letter-header">New Orders</span>
@@ -50,7 +50,7 @@
             </div>
 
             <div>
-              <button id="general-view-reports">View Reports</button>
+              <button id="general-view-reports" onclick="switchDisplay('orders-button')">View Reports</button>
               <div id="general-completed-orders">
                 <span class="general-number-header">42</span> <br/>
                 <span class="general-letter-header">Completed Orders</span>
@@ -76,12 +76,19 @@
             </div>
 
             <div>
-              <button id="revenue-button">View Revenue</button>
+              <button id="revenue-button" onclick="switchDisplay('revenue-button')">View Revenue</button>
             </div>
           </div>
         </div>
       </div>
-      <div id="offerings" class="main-display-categories"></div>
+
+      <div id="offerings" class="main-display-categories">
+        <h1 id="offerings-header">Offerings</h1>
+
+        <div id="offerings-wrapper">
+        </div>
+      </div>
+
       <div id="orders" class="main-display-categories"></div>
       <div id="ratings" class="main-display-categories"></div>
       <div id="revenue" class="main-display-categories"></div>

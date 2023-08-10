@@ -32,6 +32,7 @@ body {
   font-size: 35px;
   padding: 15px 0px 0px 30px;
   position: relative;
+  cursor: pointer;
 }
 
 #vendor-account {
@@ -72,16 +73,29 @@ body {
   box-shadow: 3px 3px 3px #ababab;
 }
 
-.side-nav-buttons:focus {
+.side-nav-buttons-focus {
+  padding: 10px;
+  width: 250%;
+  margin-left: 15%;
+  border-radius: 5px;
+  margin-bottom: 45%;
+  transition: .2s;
+
+  box-shadow: 3px 3px 3px #ababab;
+  background: #fae9d7;
+  border: 2px solid #232946;
+}
+
+/* .side-nav-buttons:focus {
   box-shadow: 3px 3px 3px #ababab;
   background: #eaddcf;
   border: 2px solid #232946;
-}
+} */
 
 #main-display {
   grid-column: 2 / 7;
   grid-row: 1 / 6;
-  background: #eaddcf;
+  background: #fae9d7;
   outline: 2px solid black;
   border-radius: 15px;
   position: relative;
@@ -213,5 +227,27 @@ body {
 
   width: 200px;
   cursor: pointer;
+}
+
+/* Category 2: Offerings */
+
+#offerings #offerings-header {
+  top: 15px;
+  position: relative;
+
+  font-size: 45px;
+}
+
+#offerings #offerings-wrapper {
+  display: flex;
+}
+
+#offerings .offering {
+  width: 350px;
+  height: 250px;
+  background: white;
+  outline: 1px solid black;
+
+  flex-basis: 35%;
 }
 
