@@ -1,11 +1,11 @@
+var firstLoadOfferings = true, firstLoadOrders = true, firstLoadRatings = true, firstLoadRevenue = true;
+
 $(document).ready(
     function()
     {
       populateGeneral();
     }
 );
-
-var firstLoadOfferings = true, firstLoadOrders = true, firstLoadRatings = true, firstLoadRevenue = true;
 
 // function to switch between all displays
 function switchDisplay(buttonID) {
@@ -70,7 +70,7 @@ function populateGeneral() {
 
 // function to populate Offerings panel
 function populateOfferings() {
-  var numOfOfferings = 5;
+  var numOfOfferings = 15;
   var offeringsWrapper = document.getElementById("offerings-wrapper");
 
   for(var i = 0; i < numOfOfferings; i++) {
@@ -83,7 +83,21 @@ function populateOfferings() {
 
 function populateOrders() {}
 
-function populateRatings() {}
+function populateRatings() {
+  var starRating = 4.25;
+  var wholeStars = Math.trunc(starRating);
+
+  var stars = document.getElementsByClassName("star");
+
+  for(var i = 0; i < wholeStars; i++) {
+    stars[i].className = "fa-solid fa-star star";
+  }
+
+  if(Math.round(starRating*2)/2 % 1 > 0) {
+    stars[wholeStars].className = "fa-solid fa-star-half-stroke star";
+  }
+
+}
 
 function populateRevenue() {}
 

@@ -2,9 +2,7 @@ body {
   background: #f9f4ef;
   font-family: 'Manjari', sans-serif;
   overflow-x: hidden;
-  padding: 0;
-  margin: 0;
-  width: 100%;
+  margin-top: 0;
 }
 
 .center {
@@ -14,10 +12,7 @@ body {
 }
 
 #grid-wrapper {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  grid-auto-rows: minmax(100px, auto);
+  display: flex;
 }
 
 #nav-bar {
@@ -93,14 +88,19 @@ body {
 } */
 
 #main-display {
-  grid-column: 2 / 7;
-  grid-row: 1 / 6;
   background: #fae9d7;
   outline: 2px solid black;
   border-radius: 15px;
-  position: relative;
-  right: 15%;
-  top: 5%;
+  left: 25%;
+  top: 15%;
+
+  margin-bottom: 100px;
+  width: 65%;
+  height:80%;
+
+  overflow-y: auto;
+
+  position: absolute;
 }
 
 .main-display-categories {
@@ -231,23 +231,45 @@ body {
 
 /* Category 2: Offerings */
 
-#offerings #offerings-header {
-  top: 15px;
+
+.headers {
+  top: 10px;
   position: relative;
 
   font-size: 45px;
 }
 
 #offerings #offerings-wrapper {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat( auto-fit, minmax(250px, 1fr) );
+  grid-gap: 30px;
+
+  padding: 20px;
 }
 
 #offerings .offering {
-  width: 350px;
   height: 250px;
-  background: white;
-  outline: 1px solid black;
+  background: #f9f4ef;
+  outline: 2px solid black;
+  border-radius: 35px;
 
-  flex-basis: 35%;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+}
+
+#ratings #stars {
+  margin: 30px;
+  font-size: 50px;
+  color: #f25042;
+}
+
+#footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 20px;
+  color: white;
+  text-align: center;
 }
 
