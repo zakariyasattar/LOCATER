@@ -1,9 +1,15 @@
 var firstLoadOfferings = true, firstLoadOrders = true, firstLoadRatings = true, firstLoadRevenue = true;
+var test_data;
 
 $(document).ready(
     function()
     {
       populateGeneral();
+
+      fetch('testing.json')
+        .then((response) => response.json())
+        .then((json) => test_data = json);
+
     }
 );
 
@@ -97,6 +103,44 @@ function populateRatings() {
     stars[wholeStars].className = "fa-solid fa-star-half-stroke star";
   }
 
+  //populate feedback-div
+  var feedback_div = document.createElement("div");
+  feedback_div.id = "feedback-div";
+
+  for(var key in test_data["reviews"]) {
+    var review = test_data["reviews"][key];
+
+    var name = review['name'];
+    var rating = review['rating'];
+    var feedback_header = review['feedback-header'];
+    var feedback_body = review['feedback-body'];
+
+    feedback_div.appendChild(createTestimonial(name, rating, feedback_header, feedback_body));
+  }
+
+  document.getElementById('ratings').appendChild(feedback_div);
+}
+
+function createTestimonial(name, rating, feedback_header, feedback_body) {
+  var testimonial = document.createElement('div');
+
+  var n = document.createElement('span');
+  n.textContent = name;
+
+  var r = document.createElement('span');
+  r.textContent = rating + " / 5";
+
+  var f_h = document.createElement('span');
+  f_h.textContent = feedback_header;
+
+  var f_b = document.createElement('span');
+  f_b.textContent = feedback_body;
+
+  testimonial.appendChild(n);
+  testimonial.appendChild(r);
+  testimonial.appendChild(f_h);
+  testimonial.appendChild(f_b);
+  return testimonial;
 }
 
 function populateRevenue() {}
