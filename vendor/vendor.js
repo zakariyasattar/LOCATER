@@ -122,7 +122,12 @@ function populateRatings() {
 }
 
 function createTestimonial(name, rating, feedback_header, feedback_body) {
+  var br = document.createElement('br');
   var testimonial = document.createElement('div');
+  testimonial.className = "testimonial";
+
+  var reviewInfo = document.createElement('div');
+  reviewInfo.id = "review-info";
 
   var n = document.createElement('span');
   n.textContent = name;
@@ -130,18 +135,48 @@ function createTestimonial(name, rating, feedback_header, feedback_body) {
   var r = document.createElement('span');
   r.textContent = rating + " / 5";
 
+  reviewInfo.appendChild(document.createElement("br"));
+  reviewInfo.appendChild(n);
+   reviewInfo.appendChild(document.createElement("br"));
+  reviewInfo.appendChild(r);
+
+  var reviewContent = document.createElement('div');
+  reviewContent.id = "review-content";
+
   var f_h = document.createElement('span');
   f_h.textContent = feedback_header;
 
   var f_b = document.createElement('span');
   f_b.textContent = feedback_body;
 
-  testimonial.appendChild(n);
-  testimonial.appendChild(r);
-  testimonial.appendChild(f_h);
-  testimonial.appendChild(f_b);
+  reviewContent.appendChild(f_h); reviewContent.appendChild(document.createElement("br")); ;reviewContent.appendChild(f_b);
+
+  testimonial.appendChild(reviewInfo);
+  testimonial.appendChild(reviewContent);
+
   return testimonial;
 }
 
-function populateRevenue() {}
+function populateRevenue() {
+  const ctx = document.getElementById('all-time');
+
+  new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+      datasets: [{
+        label: 'Income',
+        data: [12, 19, 3, 5, 2, 3],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+}
 

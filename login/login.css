@@ -1,0 +1,42 @@
+body {
+  margin: 0;
+  background: #fdf7c6;
+  font-family: 'Manjari', sans-serif;
+}
+
+#locater-logo{
+  font-family: 'Baloo 2', cursive;
+  font-size: 35px;
+  padding: 10px 0px 0px 25px;
+  z-index: 100;
+  position: absolute;
+  cursor: pointer;
+}
+
+#login-wrapper {
+  width: 55%;
+  height: 100vh;
+  z-index: 1000;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+#login-img {
+  width: 50%;
+  height: 100vh;
+  object-fit:cover;
+}
+
+#login-header {
+  text-align: center;
+  position: relative;
+  top: 10%;
+  font-size: 40px;
+}
+
+#account-type-image {
+  width: 60%;
+  position: relative;
+  left: 20%;
+}

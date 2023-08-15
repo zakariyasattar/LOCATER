@@ -274,7 +274,17 @@ body {
 }
 
 #ratings .testimonial {
-  
+  display: flex;
+}
+
+#ratings #review-info {
+  float: left;
+  padding: 10px;
+}
+
+#ratings #review-content {
+  padding: 10px;
+  width: 80%;
 }
 
 #footer {
