@@ -2,7 +2,7 @@ $(document).ready(
     function()
     {
       document.getElementById("log-in").onclick = function () {
-        location.href = "login/login.html";
+        location.href = "vendor/vendor.html";
       };
     }
 );
