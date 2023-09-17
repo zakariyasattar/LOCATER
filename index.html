@@ -1,11 +1,33 @@
 <!DOCTYPE html>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Amiri&family=Baloo+2&family=Manjari&display=swap" rel="stylesheet"> 
-<link rel="stylesheet" href="landing/landing.css">
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri&family=Baloo+2&family=Manjari&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="landing/landing.css">
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="landing/landing.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-analytics.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyAiaBkQJtTBdg2QkMpGWzxdLJ2jFRM5_As",
+      authDomain: "locater-db.firebaseapp.com",
+      projectId: "locater-db",
+      storageBucket: "locater-db.appspot.com",
+      messagingSenderId: "844982810827",
+      appId: "1:844982810827:web:f9acb5c36d34a51e32834e",
+      measurementId: "G-RGSYM6B4VE"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+  </script>
+
+  <script src="landing/landing.js"></script>
+</head>
 
 <h1 id="header">Welcome to Locater</h1>
 
