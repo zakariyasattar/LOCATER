@@ -1,0 +1,46 @@
+{
+  "vendors": {
+    "example_catering": {
+      "auth": {
+        "user_id": "10023"
+      },
+      "data": {
+        "general": {
+          "income_month": "30000",
+          "name": "Example Catering",
+          "num_of_reviews": "1381",
+          "rating": "4.44"
+        },
+        "offerings": {
+          "xs": "empty"
+        },
+        "orders": {
+          "completed": {
+            "total_cost": "113.46",
+            "tax": "13.29",
+            "time_ordered": "2023-09-19T15:29:55.149Z",
+            "0000001": {
+              "items_ordered": {
+                "8": {
+                  "item_name": "Pan of Biryani",
+                  "quantity": "2"
+                },
+                "15": {
+                  "item_name": "Pot of Chai",
+                  "quantity": "4"
+                },
+                "33": {
+                  "item_name": "Pakora",
+                  "quantity": "5"
+                }
+              }
+            }
+          },
+          "new": {
+            "test": "test"
+          }
+        }
+      }
+    }
+  }
+}

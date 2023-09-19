@@ -1,17 +1,73 @@
 var firstLoadOfferings = true, firstLoadOrders = true, firstLoadRatings = true, firstLoadRevenue = true;
 var test_data;
+var vendor;
 
 $(document).ready(
-    function()
-    {
-      populateGeneral();
+  function()
+  {
+    identifyVendor();
 
-      fetch('testing.json')
-        .then((response) => response.json())
-        .then((json) => test_data = json);
-
-    }
+    fetch('testing.json')
+      .then((response) => response.json())
+      .then((json) => test_data = json);
+  }
 );
+
+// function to located vendor in db, or initVendor() if vendor doesn't exist yet
+function identifyVendor() {
+  var vendor_info = localStorage['vendor_info'].split("/");
+  var vendor_name = vendor_info[2];
+
+  firebase.database().ref("vendors/" + vendor_name).on('value', (snapshot) => {
+    console.log(snapshot.val());
+    if(snapshot.val() == null) {
+      initVendor(vendor_info);
+    }
+    else {
+      vendor = snapshot.val();
+    }
+  });
+
+  populateGeneral();
+}
+
+// function to create vendor profile in db, takes an array: vendor_info
+function initVendor(vendor_info) {
+  var vendor_gov_name = vendor_info[0];
+  var vendor_email = vendor_info[1];
+  var vendor_phone = vendor_info[2];
+  var vendor_name = vendor_info[3];
+
+  var newVendor = {
+    [vendor_name]: {
+      "info": {
+          "gov_name": vendor_gov_name,
+          "email": vendor_email,
+          "phone": vendor_phone,
+          "vendor_name": vendor_name
+      },
+      "data": {
+        "general": {
+          "income_month": "0",
+          "num_of_reviews": "0",
+          "rating": "-"
+        },
+        "offerings": {
+            "na": "na"
+        },
+        "orders": {
+          "completed": {
+              "na": "na"
+          },
+          "new": {
+              "na": "na"
+          }
+        }
+      }
+    }
+  }
+  firebase.database().ref().child('/vendors/' + vendor_name).set(newVendor);
+}
 
 // function to switch between all displays
 function switchDisplay(buttonID) {
@@ -69,9 +125,19 @@ function populationControl(category) {
 
 function populateGeneral() {
   document.getElementById("general-button").className = "side-nav-buttons-focus";
-  document.getElementById("vendor-name").textContent = "Example Catering" + "!";
-  document.getElementById("rating").textContent = "4.4";
-  document.getElementById("num-of-reviews").textContent = "1381";
+
+
+  firebase.database().ref("vendors/").on('value', (snapshot) => {
+    console.log(snapshot.val());
+  }, (errorObject) => {
+    console.log('The read failed: ' + errorObject.name);
+  });
+
+  //initialize all general data points
+  document.getElementById("vendor-name").textContent = "doc_data.name "+ "!";
+  document.getElementById("rating").textContent = "doc_data.rating.substring(0, 3);"
+  document.getElementById("num-of-reviews").textContent = "doc_data.num_of_reviews;"
+  document.getElementById("order-count").textContent = "order_doc.data();"
 }
 
 // function to populate Offerings panel
