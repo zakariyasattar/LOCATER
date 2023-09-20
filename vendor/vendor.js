@@ -1,6 +1,6 @@
 var firstLoadOfferings = true, firstLoadOrders = true, firstLoadRatings = true, firstLoadRevenue = true;
 var test_data;
-var vendor;
+let vendor;
 
 $(document).ready(
   function()
@@ -16,20 +16,22 @@ $(document).ready(
 // function to located vendor in db, or initVendor() if vendor doesn't exist yet
 function identifyVendor() {
   var vendor_info = localStorage['vendor_info'].split("/");
-  var vendor_name = vendor_info[2];
+  var vendor_name = vendor_info[3];
 
   firebase.database().ref("vendors/" + vendor_name).on('value', (snapshot) => {
-    console.log(snapshot.val());
     if(snapshot.val() == null) {
       initVendor(vendor_info);
     }
     else {
-      vendor = snapshot.val();
+      // store vendor data where page can access
+      var secretKey = snapshot.val().info.secret_key;
+      var ciphertext = CryptoJS.AES.encrypt(JSON.stringify(snapshot.val()), secretKey).toString();
+      localStorage['vendor'] = ciphertext;
     }
   });
-
   populateGeneral();
 }
+
 
 // function to create vendor profile in db, takes an array: vendor_info
 function initVendor(vendor_info) {
@@ -37,36 +39,43 @@ function initVendor(vendor_info) {
   var vendor_email = vendor_info[1];
   var vendor_phone = vendor_info[2];
   var vendor_name = vendor_info[3];
+  var secretKey = JSON.stringify(generateKey(vendor_name));
 
   var newVendor = {
-    [vendor_name]: {
-      "info": {
-          "gov_name": vendor_gov_name,
-          "email": vendor_email,
-          "phone": vendor_phone,
-          "vendor_name": vendor_name
+    "info": {
+      "gov_name": vendor_gov_name,
+      "email": vendor_email,
+      "phone": vendor_phone,
+      "vendor_name": vendor_name,
+      "secret_key": secretKey
+    },
+    "data": {
+      "general": {
+        "income_month": "0",
+        "num_of_reviews": "0",
+        "rating": "-"
       },
-      "data": {
-        "general": {
-          "income_month": "0",
-          "num_of_reviews": "0",
-          "rating": "-"
-        },
-        "offerings": {
+      "offerings": {
+          "na": "na"
+      },
+      "orders": {
+        "completed": {
             "na": "na"
         },
-        "orders": {
-          "completed": {
-              "na": "na"
-          },
-          "new": {
-              "na": "na"
-          }
+        "new": {
+            "na": "na"
         }
       }
     }
   }
+  localStorage['vendor'] = JSON.stringify(newVendor);
   firebase.database().ref().child('/vendors/' + vendor_name).set(newVendor);
+}
+
+// function to generate new secretKey for user
+function generateKey(p){
+  var salt = CryptoJS.lib.WordArray.random(128/8);
+  return CryptoJS.PBKDF2(p, salt, { keySize: 512/32, iterations: 1000 });
 }
 
 // function to switch between all displays
@@ -123,18 +132,21 @@ function populationControl(category) {
   }
 }
 
+
 function populateGeneral() {
+  firebase.database().ref("vendors/" + localStorage['vendor_info'].split("/")[3] + "/info/secret_key").on('value', (snapshot) => {
+    localStorage['secret_key'] = snapshot.val();
+  });
+  var bytes  = CryptoJS.AES.decrypt(localStorage['vendor'], localStorage['secret_key']);
+  var originalText = bytes.toString(CryptoJS.enc.Utf8);
+  vendor = JSON.parse(originalText);
+
+  console.log(vendor);
+
   document.getElementById("general-button").className = "side-nav-buttons-focus";
 
-
-  firebase.database().ref("vendors/").on('value', (snapshot) => {
-    console.log(snapshot.val());
-  }, (errorObject) => {
-    console.log('The read failed: ' + errorObject.name);
-  });
-
   //initialize all general data points
-  document.getElementById("vendor-name").textContent = "doc_data.name "+ "!";
+  document.getElementById("vendor-name").textContent = "vendor.info.vendor_name"+ "!";
   document.getElementById("rating").textContent = "doc_data.rating.substring(0, 3);"
   document.getElementById("num-of-reviews").textContent = "doc_data.num_of_reviews;"
   document.getElementById("order-count").textContent = "order_doc.data();"
